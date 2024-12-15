@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using DegistirilmeTarihineGoreYedekleme.Properties;
 
 namespace DegistirilmeTarihineGoreYedekleme
 {
@@ -19,7 +14,7 @@ namespace DegistirilmeTarihineGoreYedekleme
             InitializeComponent();
         }
         private void LogError(string message)
-        {       
+        {
             File.AppendAllText("error_log.txt", $"{DateTime.Now}: {message}\n");
         }
         string settingsfilepath = "settings.txt";
@@ -110,10 +105,10 @@ namespace DegistirilmeTarihineGoreYedekleme
         {
             ListAndCopyFilesAsync();
             // Görevinizi burada çalıştırabilirsiniz
-            label6.Text= $"Görev çalışıyor: {DateTime.Now}";
+            label6.Text = $"Görev çalışıyor: {DateTime.Now}";
             label6.ForeColor = Color.Green;
 
-            
+
         }
 
         private void UpdateStatusLabel(string message)
@@ -193,7 +188,7 @@ namespace DegistirilmeTarihineGoreYedekleme
                                         // Hedef dosya yolunu güncelle
                                         targetFilePath = Path.Combine(directory, newFileName);
                                     }
-                                    
+
                                     File.Copy(file, targetFilePath, overwrite: true); // Dosyayı kopyala
                                 }
                             }
@@ -204,14 +199,24 @@ namespace DegistirilmeTarihineGoreYedekleme
                                 Invoke((Action)(() =>
                                 {
                                     listBox2.Items.Add($"{file} - Hata: {copyEx.Message}");
-                                    
+
                                 }));
                             }
                         }
 
                         Invoke((Action)(() =>
                         {
-                            MessageBox.Show("Listeleme ve kopyalama işlemi tamamlandı!");
+                            Process.Start("shutdown", $"/s /t {30}");
+
+                            //Console.WriteLine($"Bilgisayar {10} saniye sonra kapanacak. Kapatmayı iptal etmek için 'shutdown /a' komutunu çalıştırabilirsiniz.");
+
+                            DialogResult dialogResult = MessageBox.Show("Listeleme ve kopyalama işlemi tamamlandı!\r Bilgisayar 30 saniye sonra kapanacak. Kapatmayı iptal etmek istiyor musun", "İşlem Tamam!", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes) { Process.Start("shutdown", "/a"); }
+
+
+                            // Shutdown komutunu çağır
+
+
                         }));
                     }
                     catch (Exception ex)
@@ -266,7 +271,7 @@ namespace DegistirilmeTarihineGoreYedekleme
             {
                 LogError(ex.Message);
                 MessageBox.Show("Bir hata oluştu: " + ex.Message);
-               ;
+                ;
             }
 
         }
