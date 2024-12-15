@@ -16,7 +16,7 @@ namespace DegistirilmeTarihineGoreYedekleme
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GunlukKullanılanDosyalariYedekleme());
+            Application.Run(new GunlukKullanilanDosyalariYedekleme());
         }
     }
 }

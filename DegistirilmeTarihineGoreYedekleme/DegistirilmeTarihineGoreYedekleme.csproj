@@ -47,16 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GunlukKullanılanDosyalariYedekleme.cs">
+    <Compile Include="GunlukKullanilanDosyalariYedekleme.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GunlukKullanılanDosyalariYedekleme.Designer.cs">
-      <DependentUpon>GunlukKullanılanDosyalariYedekleme.cs</DependentUpon>
+    <Compile Include="GunlukKullanilanDosyalariYedekleme.Designer.cs">
+      <DependentUpon>GunlukKullanilanDosyalariYedekleme.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GunlukKullanılanDosyalariYedekleme.resx">
-      <DependentUpon>GunlukKullanılanDosyalariYedekleme.cs</DependentUpon>
+    <EmbeddedResource Include="GunlukKullanilanDosyalariYedekleme.resx">
+      <DependentUpon>GunlukKullanilanDosyalariYedekleme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
