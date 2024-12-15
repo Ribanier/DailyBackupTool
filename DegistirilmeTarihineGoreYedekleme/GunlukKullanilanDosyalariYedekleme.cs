@@ -18,6 +18,10 @@ namespace DegistirilmeTarihineGoreYedekleme
         {
             InitializeComponent();
         }
+        private void LogError(string message)
+        {       
+            File.AppendAllText("error_log.txt", $"{DateTime.Now}: {message}\n");
+        }
         string settingsfilepath = "settings.txt";
         string sourcedirectorypath = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string targetdirectorypath = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -71,6 +75,7 @@ namespace DegistirilmeTarihineGoreYedekleme
             catch (Exception ex)
             {
                 MessageBox.Show("Bir hata oluştu: " + ex.Message);
+                LogError(ex.Message);
             }
             // Form yüklendiğinde zamanlayıcı başlasın
             await ScheduleDailyTask(starthour, startmin, ExecuteTask);
@@ -105,9 +110,10 @@ namespace DegistirilmeTarihineGoreYedekleme
         {
             ListAndCopyFilesAsync();
             // Görevinizi burada çalıştırabilirsiniz
-            MessageBox.Show($"Görev çalıştı: {DateTime.Now}", "Bilgilendirme");
+            label6.Text= $"Görev çalışıyor: {DateTime.Now}";
+            label6.ForeColor = Color.Green;
 
-            // Örnek: Bir log yazabilir veya başka bir işlem yapabilirsiniz
+            
         }
 
         private void UpdateStatusLabel(string message)
@@ -120,6 +126,7 @@ namespace DegistirilmeTarihineGoreYedekleme
             else
             {
                 label6.Text = message; // lblStatus, Form üzerindeki bir Label bileşeni
+                label6.ForeColor = Color.Black;
             }
         }
         private async void ListAndCopyFilesAsync()
@@ -151,6 +158,7 @@ namespace DegistirilmeTarihineGoreYedekleme
                             try
                             {
                                 DateTime lastWriteTime = File.GetLastWriteTime(file).Date;
+                                int index = 0;
 
                                 // Tarih aralığını kontrol et
                                 if (lastWriteTime >= startDate && lastWriteTime <= endDate)
@@ -167,16 +175,36 @@ namespace DegistirilmeTarihineGoreYedekleme
                                     {
                                         Directory.CreateDirectory(targetDirectory); // Alt klasörleri oluştur
                                     }
+                                    if (Path.GetFileName(file).Length >= 100)
+                                    {
+                                        string directory = Path.GetDirectoryName(targetFilePath); // Hedef dosya dizinini al
+                                        string extension = Path.GetExtension(file); // Dosya uzantısı
 
+                                        // Yeni dosya adını oluştur
+                                        string newFileName = $"degistirilmis{index++.ToString()}{extension}";
+
+                                        // Eski ve yeni dosya isimlerini log.txt'ye yaz
+                                        string logFilePath = Path.Combine(directory, "log.txt");
+                                        using (StreamWriter writer = new StreamWriter(logFilePath, true)) // Append mode
+                                        {
+                                            writer.WriteLine($"Eski Dosya Adı: {Path.GetFileName(file)}, Yeni Dosya Adı: {newFileName}");
+                                        }
+
+                                        // Hedef dosya yolunu güncelle
+                                        targetFilePath = Path.Combine(directory, newFileName);
+                                    }
+                                    
                                     File.Copy(file, targetFilePath, overwrite: true); // Dosyayı kopyala
                                 }
                             }
                             catch (Exception copyEx)
                             {
+                                LogError(copyEx.Message);
                                 // Hata oluşursa, dosyayı listBox2'ye ekle
                                 Invoke((Action)(() =>
                                 {
                                     listBox2.Items.Add($"{file} - Hata: {copyEx.Message}");
+                                    
                                 }));
                             }
                         }
@@ -188,6 +216,7 @@ namespace DegistirilmeTarihineGoreYedekleme
                     }
                     catch (Exception ex)
                     {
+                        LogError(ex.Message);
                         Invoke((Action)(() =>
                         {
                             MessageBox.Show($"Genel bir hata oluştu: {ex.Message}");
@@ -235,7 +264,9 @@ namespace DegistirilmeTarihineGoreYedekleme
             }
             catch (Exception ex)
             {
+                LogError(ex.Message);
                 MessageBox.Show("Bir hata oluştu: " + ex.Message);
+               ;
             }
 
         }
