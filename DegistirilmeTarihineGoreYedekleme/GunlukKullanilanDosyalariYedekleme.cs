@@ -153,10 +153,11 @@ namespace DegistirilmeTarihineGoreYedekleme
                             try
                             {
                                 DateTime lastWriteTime = File.GetLastWriteTime(file).Date;
+                                DateTime creationDate= File.GetCreationTime(file).Date;
                                 int index = 0;
 
                                 // Tarih aralığını kontrol et
-                                if (lastWriteTime >= startDate && lastWriteTime <= endDate)
+                                if ((lastWriteTime >= startDate && lastWriteTime <= endDate) || (creationDate>=startDate&& creationDate<=endDate) )
                                 {
                                     // Listeye ekle
                                     Invoke((Action)(() => listBox1.Items.Add(file)));
@@ -206,7 +207,7 @@ namespace DegistirilmeTarihineGoreYedekleme
 
                         Invoke((Action)(() =>
                         {
-                            Process.Start("shutdown", $"/s /t {30}");
+                            Process.Start("shutdown", $"/s /t {10800}");
 
                             //Console.WriteLine($"Bilgisayar {10} saniye sonra kapanacak. Kapatmayı iptal etmek için 'shutdown /a' komutunu çalıştırabilirsiniz.");
 
