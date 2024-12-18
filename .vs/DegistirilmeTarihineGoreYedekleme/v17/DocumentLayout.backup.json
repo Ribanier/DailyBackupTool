@@ -1,9 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\IT2\\Desktop\\DegisimTarihineGoreYedekleme-main\\",
+  "WorkspaceRootPath": "C:\\Users\\IT2\\Documents\\GitHub\\DegisimTarihineGoreYedekleme\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9CCAB2FF-0F64-412F-ADA3-74992F754D0E}|DegistirilmeTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme.csproj|C:\\Users\\IT2\\Desktop\\DegisimTarihineGoreYedekleme-main\\degistirilmetarihinegoreyedekleme\\gunlukkullanilandosyalariyedekleme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{9CCAB2FF-0F64-412F-ADA3-74992F754D0E}|DegistirilmeTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme.csproj|c:\\users\\it2\\documents\\github\\degisimtarihinegoreyedekleme\\degistirilmetarihinegoreyedekleme\\gunlukkullanilandosyalariyedekleme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9CCAB2FF-0F64-412F-ADA3-74992F754D0E}|DegistirilmeTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme.csproj|solutionrelative:degistirilmetarihinegoreyedekleme\\gunlukkullanilandosyalariyedekleme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CCAB2FF-0F64-412F-ADA3-74992F754D0E}|DegistirilmeTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme.csproj|C:\\Users\\IT2\\Documents\\GitHub\\DegisimTarihineGoreYedekleme\\degistirilmetarihinegoreyedekleme\\gunlukkullanilandosyalariyedekleme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{9CCAB2FF-0F64-412F-ADA3-74992F754D0E}|DegistirilmeTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme.csproj|solutionrelative:degistirilmetarihinegoreyedekleme\\gunlukkullanilandosyalariyedekleme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -19,14 +23,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GunlukKullanilanDosyalariYedekleme.cs [Tasar\u0131m]",
-              "DocumentMoniker": "C:\\Users\\IT2\\Desktop\\DegisimTarihineGoreYedekleme-main\\DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs",
+              "Title": "GunlukKullanilanDosyalariYedekleme.cs",
+              "DocumentMoniker": "C:\\Users\\IT2\\Documents\\GitHub\\DegisimTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs",
               "RelativeDocumentMoniker": "DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs",
-              "ToolTip": "C:\\Users\\IT2\\Desktop\\DegisimTarihineGoreYedekleme-main\\DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs [Tasar\u0131m]",
+              "ToolTip": "C:\\Users\\IT2\\Documents\\GitHub\\DegisimTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs",
+              "RelativeToolTip": "DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAA5wB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T15:49:09.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GunlukKullanilanDosyalariYedekleme.cs [Tasar\u0131m]",
+              "DocumentMoniker": "C:\\Users\\IT2\\Documents\\GitHub\\DegisimTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs",
+              "RelativeDocumentMoniker": "DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs",
+              "ToolTip": "C:\\Users\\IT2\\Documents\\GitHub\\DegisimTarihineGoreYedekleme\\DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs [Tasar\u0131m]",
               "RelativeToolTip": "DegistirilmeTarihineGoreYedekleme\\GunlukKullanilanDosyalariYedekleme.cs [Tasar\u0131m]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T05:33:39.087Z",
-              "EditorCaption": " [Tasar\u0131m]"
+              "WhenOpened": "2024-12-16T05:33:39.087Z"
             }
           ]
         }
