@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Bir bütünleştirilmiş koda ilişkin Genel Bilgiler aşağıdaki öznitelikler kümesiyle
 // denetlenir. Bütünleştirilmiş kod ile ilişkili bilgileri değiştirmek için
 // bu öznitelik değerlerini değiştirin.
-[assembly: AssemblyTitle("DegistirilmeTarihineGoreYedekleme")]
+[assembly: AssemblyTitle("DailyBackupTool")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DegistirilmeTarihineGoreYedekleme")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyProduct("DailyBackupTool")]
+[assembly: AssemblyCopyright("Copyright Ribanier©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
