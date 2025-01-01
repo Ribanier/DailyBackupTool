@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DegistirilmeTarihineGoreYedekleme
+namespace DailyBackupManager
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace DegistirilmeTarihineGoreYedekleme
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GunlukKullanilanDosyalariYedekleme());
+            Application.Run(new BackupManager());
         }
     }
 }

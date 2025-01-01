@@ -1,0 +1,10 @@
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\obj\Debug\DailyBackupTool.csproj.AssemblyReference.cache
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\obj\Debug\DailyBackupManager.BackupManager.resources
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\obj\Debug\DailyBackupTool.csproj.GenerateResource.cache
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\obj\Debug\DailyBackupTool.csproj.CoreCompileInputs.cache
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\bin\Debug\DailyBackupTool.exe.config
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\bin\Debug\DailyBackupTool.exe
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\bin\Debug\DailyBackupTool.pdb
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\obj\Debug\DailyBackupTool.Properties.Resources.resources
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\obj\Debug\DailyBackupTool.exe
+C:\Users\sadik\OneDrive\Documents\GitHub\DegisimTarihineGoreYedekleme\DegistirilmeTarihineGoreYedekleme\obj\Debug\DailyBackupTool.pdb
