@@ -1,23 +1,28 @@
-# Batch Renamer
+# Daily Backup Tool
 
-The BatchRenamer is a user-friendly utility designed to quickly rename multiple files in bulk. With various renaming options, this tool simplifies the process of organizing and managing large numbers of files.
+The DailyBackupTool is a robust and user-friendly backup utility designed to automate daily file backups based on file creation and last modification dates. This tool ensures that important files are consistently backed up, minimizing the risk of data loss.
 ### Key Features:
 
-##### 1 - File Addition:
-- Users can easily add files to the list by dragging and dropping them or using the file picker.
-##### 2 - Multiple Renaming Options:
-- Random Name: Automatically generates random names for files based on a defined length.
-- Starting Number: Renames files by assigning them sequential numbers, with the ability to specify the starting number.
-- Custom Name: Allows users to manually define a name for renaming the files.
-##### 3 - Name Conflict Prevention:
+##### 1 - Time-Scheduled Backups:
+- Automatically initiates the backup process at a user-defined time each day.
+##### 2 - Backup Based on File Properties:
+- Detects files based on their creation date or last modification date.
+- Ensures only relevant and updated files are included in the backup, optimizing storage space.
+##### 3 - Customizable Backup Locations:
 - Allows users to specify the target directory for storing backups.
+##### 4 - Error Logging and Notifications:
+- Keeps a detailed log of each backup operation.
+- Provides notifications for successful or failed backups.
+##### 5 - Lightweight and Efficient:
+- Runs seamlessly in the background without impacting system performance.
  
 ### How It Works:
-- Add the files you want to rename to the list.
-- Choose your preferred renaming method (Random, Starting Number, or Custom Name).
-- The tool will process the files and rename them accordingly.
+- Define the source directories containing files to be backed up.
+- Set the preferred backup time and target location.
+- The tool will scan files based on their creation or last modification dates.
+- Files meeting the criteria are copied to the designated backup folder.
 
-BatchRenamer is perfect for users looking for a fast and efficient way to rename multiple files in bulk, making file management and organization much simpler.
+The DailyBackupTool is ideal for anyone seeking a simple and effective way to safeguard their data on a daily basis. It’s a perfect solution for both personal and professional use cases.
 
 
 ## License
