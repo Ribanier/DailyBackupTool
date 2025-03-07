@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BackupManager));
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +53,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.listBoxSourceDirectories = new System.Windows.Forms.ListBox();
+            this.aboutlbl = new System.Windows.Forms.LinkLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // dateTimePickerStartDate
@@ -104,6 +107,7 @@
             this.listBoxProcessedFiles.Name = "listBoxProcessedFiles";
             this.listBoxProcessedFiles.Size = new System.Drawing.Size(184, 199);
             this.listBoxProcessedFiles.TabIndex = 9;
+            this.listBoxProcessedFiles.DoubleClick += new System.EventHandler(this.listBoxProcessedFiles_DoubleClick);
             // 
             // listBoxErrorFiles
             // 
@@ -113,6 +117,7 @@
             this.listBoxErrorFiles.Name = "listBoxErrorFiles";
             this.listBoxErrorFiles.Size = new System.Drawing.Size(183, 199);
             this.listBoxErrorFiles.TabIndex = 10;
+            this.listBoxErrorFiles.DoubleClick += new System.EventHandler(this.listBoxErrorFiles_DoubleClick);
             // 
             // label3
             // 
@@ -255,11 +260,28 @@
             this.listBoxSourceDirectories.TabIndex = 26;
             this.listBoxSourceDirectories.DoubleClick += new System.EventHandler(this.listBoxSourceDirectories_DoubleClick);
             // 
+            // aboutlbl
+            // 
+            this.aboutlbl.AutoSize = true;
+            this.aboutlbl.Location = new System.Drawing.Point(388, 551);
+            this.aboutlbl.Name = "aboutlbl";
+            this.aboutlbl.Size = new System.Drawing.Size(53, 13);
+            this.aboutlbl.TabIndex = 27;
+            this.aboutlbl.TabStop = true;
+            this.aboutlbl.Text = "Hakkında";
+            this.aboutlbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.aboutlbl_LinkClicked);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // BackupManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 558);
+            this.ClientSize = new System.Drawing.Size(452, 565);
+            this.Controls.Add(this.aboutlbl);
             this.Controls.Add(this.listBoxSourceDirectories);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label11);
@@ -319,6 +341,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.ListBox listBoxSourceDirectories;
+        private System.Windows.Forms.LinkLabel aboutlbl;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

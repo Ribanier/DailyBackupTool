@@ -24,9 +24,13 @@ namespace DailyBackupManager
         {
             File.AppendAllText("error_log.txt", $"{DateTime.Now}: {message}\n");
         }
-
+        ToolTip toolTip;
         private async void BackupManager_Load(object sender, EventArgs e)
         {
+            toolTip = new ToolTip();
+            toolTip.SetToolTip(this.listBoxSourceDirectories, "Silmek için çift tıklayın");
+            toolTip.SetToolTip(this.listBoxProcessedFiles, "Kopyalamak için çift tıklayın");
+            toolTip.SetToolTip(this.listBoxErrorFiles, "Kopyalamak için çift tıklayın");
             try
             {
                 if (!File.Exists(settingsFilePath))
@@ -158,10 +162,11 @@ namespace DailyBackupManager
             foreach (string sourceDirectories in listBoxSourceDirectories.Items)
             {
 
-                string sourcePath = sourceDirectories;
-                string targetPath = targetDirectory;// Hedef klasör
+                string sourcePath = @"\\?\" + sourceDirectories;
+                string targetPath = @"\\?\" + targetDirectory;// Hedef klasör
                 DateTime startDate = dateTimePickerStartDate.Value.Date;
                 DateTime endDate = dateTimePickerEndDate.Value.Date;
+                //  MessageBox.Show(sourcePath.ToString() + @"\p" + targetPath.ToString());
 
 
                 if (Directory.Exists(sourcePath))
@@ -170,7 +175,7 @@ namespace DailyBackupManager
                     // string dateTimeFolderName = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss--ffff");
                     string dateTimeFolderName = DateTime.Now.ToString("yyyy-M-d_s-ffff") + "-" + sourcePath.Split('\\').Last();
                     string targetRootFolder = Path.Combine(targetPath, dateTimeFolderName);
-
+                    //   MessageBox.Show(dateTimeFolderName.ToString() + @"\p" + targetRootFolder.ToString());
                     Directory.CreateDirectory(targetRootFolder); // Klasörü oluştur
 
 
@@ -183,8 +188,10 @@ namespace DailyBackupManager
 
                             foreach (var file in fileArray)
                             {
+                                //MessageBox.Show(file.ToString());
                                 try
                                 {
+
                                     DateTime lastWriteTime = File.GetLastWriteTime(file).Date;
                                     DateTime creationDate = File.GetCreationTime(file).Date;
                                     int index = 0;
@@ -199,29 +206,29 @@ namespace DailyBackupManager
                                         string relativePath = GetRelativePath(sourcePath, file); // Özel yöntem kullanılıyor
                                         string targetFilePath = Path.Combine(targetRootFolder, relativePath); // Tarih klasörüne göre kopyala
                                         string targetDirectory = Path.GetDirectoryName(targetFilePath);
-
+                                        //  MessageBox.Show(relativePath.ToString() + @"\p" + targetFilePath.ToString()+@"\p"+targetDirectory.ToString());
                                         if (!Directory.Exists(targetDirectory))
                                         {
                                             Directory.CreateDirectory(targetDirectory); // Alt klasörleri oluştur
                                         }
-                                        if (Path.GetFileName(file).Length >= 100)
-                                        {
-                                            string directory = Path.GetDirectoryName(targetFilePath); // Hedef dosya dizinini al
-                                            string extension = Path.GetExtension(file); // Dosya uzantısı
+                                        /*   if (Path.GetFileName(file).Length >= 100)
+                                           {
+                                               string directory = Path.GetDirectoryName(targetFilePath); // Hedef dosya dizinini al
+                                               string extension = Path.GetExtension(file); // Dosya uzantısı
 
-                                            // Yeni dosya adını oluştur
-                                            string newFileName = $"degistirilmis{index++.ToString()}{extension}";
+                                               // Yeni dosya adını oluştur
+                                               string newFileName = $"degistirilmis{index++.ToString()}{extension}";
 
-                                            // Eski ve yeni dosya isimlerini log.txt'ye yaz
-                                            string logFilePath = Path.Combine(directory, "log.txt");
-                                            using (StreamWriter writer = new StreamWriter(logFilePath, true)) // Append mode
-                                            {
-                                                writer.WriteLine($"Eski Dosya Adı: {Path.GetFileName(file)}, Yeni Dosya Adı: {newFileName}");
-                                            }
+                                               // Eski ve yeni dosya isimlerini log.txt'ye yaz
+                                               string logFilePath = Path.Combine(directory, "log.txt");
+                                               using (StreamWriter writer = new StreamWriter(logFilePath, true)) // Append mode
+                                               {
+                                                   writer.WriteLine($"Eski Dosya Adı: {Path.GetFileName(file)}, Yeni Dosya Adı: {newFileName}");
+                                               }
 
-                                            // Hedef dosya yolunu güncelle
-                                            targetFilePath = Path.Combine(directory, newFileName);
-                                        }
+                                               // Hedef dosya yolunu güncelle
+                                               targetFilePath = Path.Combine(directory, newFileName);
+                                           }*/
 
                                         File.Copy(file, targetFilePath, overwrite: true); // Dosyayı kopyala
                                     }
@@ -271,9 +278,22 @@ namespace DailyBackupManager
 
         public static string GetRelativePath(string basePath, string filePath)
         {
-            Uri baseUri = new Uri(basePath.EndsWith("\\") ? basePath : basePath + "\\");
-            Uri fileUri = new Uri(filePath);
-            return Uri.UnescapeDataString(baseUri.MakeRelativeUri(fileUri).ToString().Replace('/', Path.DirectorySeparatorChar));
+            /*   Uri baseUri = new Uri(basePath.EndsWith("\\") ? basePath : basePath + "\\");
+               Uri fileUri = new Uri(filePath);
+               return Uri.UnescapeDataString(baseUri.MakeRelativeUri(fileUri).ToString().Replace('/', Path.DirectorySeparatorChar));*/
+            basePath = basePath.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+
+            // filePath'i normalleştir
+            filePath = filePath.TrimEnd(Path.DirectorySeparatorChar);
+
+            // Base path ile filePath arasındaki kısmı bul
+            if (filePath.StartsWith(basePath, StringComparison.OrdinalIgnoreCase))
+            {
+                return filePath.Substring(basePath.Length);
+            }
+
+            // Eğer filePath, basePath'ten bir yol değilse, tam yol döndürülür.
+            return filePath;
         }
         private void buttonSaveSettings_Click(object sender, EventArgs e)
         {
@@ -296,7 +316,6 @@ namespace DailyBackupManager
             textBoxTargetDirectory.Text = dialog.SelectedPath;
         }
 
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("mailto:sadikyildirim@ribanier.com");
@@ -307,5 +326,50 @@ namespace DailyBackupManager
             listBoxSourceDirectories.Items.Remove(listBoxSourceDirectories.SelectedItem);
         }
 
+        private void aboutlbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Bu program, belirlenen bir klasördeki dosyaları son değiştirme veya oluşturma tarihine göre analiz ederek yedekleme işlemi gerçekleştirir. Kullanıcı tarafından belirlenen tarih kriterlerine uygun dosyalar, belirtilen yedekleme klasörüne kopyalanır veya taşınır. Böylece, belirli bir zaman diliminde güncellenen veya oluşturulan dosyaların güvenli bir şekilde saklanması sağlanır. Program, veri kaybını önlemek ve dosya yönetimini kolaylaştırmak için etkili bir yedekleme çözümü sunar.", "Hakkında", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void listBoxProcessedFiles_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBoxProcessedFiles.SelectedItem != null)
+            {
+                // Clipboard'a kopyala
+                Clipboard.SetData(DataFormats.Text, (Object)listBoxProcessedFiles.SelectedItem);
+
+                // Kopyalandı mesajını göster
+                toolTip.Show("Kopyalandı!", listBoxProcessedFiles, 1000);
+                timerVal = 0;
+                timer1.Start();
+            }
+        }
+
+        private void listBoxErrorFiles_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBoxProcessedFiles.SelectedItem != null)
+            {
+                // Clipboard'a kopyala
+                Clipboard.SetData(DataFormats.Text, (Object)listBoxErrorFiles.SelectedItem);
+
+                // Kopyalandı mesajını göster
+                toolTip.Show("Kopyalandı!", listBoxProcessedFiles, 1000);
+                timerVal = 0;
+                timer1.Start();
+            }
+
+        }
+        int timerVal = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (timerVal == 2)
+            {
+                toolTip.SetToolTip(this.listBoxProcessedFiles, "Kopyalamak için çift tıklayın");
+                toolTip.SetToolTip(this.listBoxErrorFiles, "Kopyalamak için çift tıklayın");
+                timerVal = 0;
+                timer1.Stop();
+            }
+            timerVal++;
+        }
     }
 }
